@@ -1,3 +1,6 @@
+            <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+            <h3><c:out value="${sessionScope.admin}"/></h3> 
             <!-- header start -->
             <header>
                 <div class="header-area transparent-bar">
@@ -9,12 +12,17 @@
                                         <select class="select-header orderby">
                                             <option value="">ENGLISH</option>
                                             <option value="">BANGLA </option>
+                                         <c:if test="${sessionScope.admin eq 'admin' }">
+												<option value="">ADMIN</option>                                         
+                                         </c:if>    
+                                          <c:if test="${empty sessionScope.admin  }">                                        
                                             <option value="">HINDI</option>
+                                            </c:if>
                                         </select>
                                     </div>
                                     <div class="currency">
                                         <select class="select-header orderby">
-                                            <option value="">USD</option>
+                                            <option value="">USD</option>                                            
                                             <option value="">US </option>
                                             <option value="">EURO</option>
                                         </select>
@@ -58,7 +66,16 @@
                                                         <li><a href="blog-details-standerd.html">about us</a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="contact.html">contact us</a></li>
+                                                <!-- <li><a href="contact.html">contact us</a></li> -->                                                                                               
+                                                 <c:if test="${sessionScope.admin eq 'admin' }">
+												<li><a href="adminsale">관리자페이지</a></li>                                         
+                                         		</c:if>    
+                                          <c:if test="${empty sessionScope.admin  }">                                        
+                                            <li><a href="contact.html">contact us</a></li>
+                                            </c:if>
+                                                
+                                                
+                                                
                                             </ul>
                                         </nav>
                                     </div>
@@ -72,7 +89,7 @@
                                         </button>
                                     </div>
                                     <div class="header-login same-style">
-                                        <a href="login-register.html">
+                                        <a href="login">
                                             <span class="ti-user"></span>
                                         </a>
                                     </div>
