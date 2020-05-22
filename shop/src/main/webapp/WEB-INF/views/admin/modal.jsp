@@ -1,68 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<!DOCTYPE html>
-<html class="no-js" lang="zxx">
-<jsp:include page="../include_main/header_css.jsp" />
-<script>
-function Memeberdelete(id){
-	if(confirm(id+"를 추방하시겠습니까?")){
-	    $.ajax({
-	        type: "GET",
-	        url:"delete.admin",
-	        data:{id: id},
-	        success : function(result){
-	            if(result==1){
-	                alert('로케이션성공하였습니다');
-	                location.href = "selectAll.admin";
-	            }else{
-	                alert('실패했습니다');
-	            }},
-	        error : function(){
-	            alert('실패');
-	        }
-	    });
-	} else {
-	    return false;
-	}};
-
-</script>
-<body>
-
-	<div class="wrapper">
-		<jsp:include page="../include_main/header.jsp" />
-		<div class="banner-area hm1-banner pt-130 pb-107">
-                <div class="container">
-					  
-						<table class="table table-bordered table-hover">
-     	 <caption style="caption-side: top;text-align: center;">회원목록</caption>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>아이디</th>
-                <th>이메일</th>
-                <th>생성날짜</th>
-                <th>회원탈퇴</th>                
-            </tr>
-        </thead>
-        <tbody>  
-            <c:forEach var="vo" items="${list}" varStatus="status">
-            			<tr>
-            			<td>${status.count}</td>
-						<td>${vo.userId }</td>
-						<td>${vo.email }</td>
-						<td>${vo.regDate }</td>
-						<td align="center"><input type="button" value="삭제" style="color:black" class='btn' onclick="Memeberdelete('${vo.userId}')"></td>
-						</tr>
-			</c:forEach>     
-        </tbody>
-    </table>	
-                </div>
-            </div>
-
-		<jsp:include page="../include_main/footer.jsp" />
-		<!-- modal -->
+<!-- modal -->
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 			aria-hidden="true">
 			<button type="button" class="close" data-dismiss="modal"
@@ -156,8 +92,3 @@ function Memeberdelete(id){
 				</div>
 			</div>
 		</div>
-	</div>
-	<jsp:include page="../include_main/footer_js.jsp" />
-
-</body>
-</html>
