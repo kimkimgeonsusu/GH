@@ -27,30 +27,34 @@ public class AdminController {
 	@Inject
 	private MemberService m_service;
 	
-	@RequestMapping(value = "admin/home", method = RequestMethod.GET)
-	public ModelAndView homess() {							
-		return new ModelAndView("admin/home");
-	}
+//	@RequestMapping(value = "admin/home", method = RequestMethod.GET)
+//	public ModelAndView homess() {							
+//		return new ModelAndView("admin/home");
+//	}
 	
-	@RequestMapping(value = "/admin/selectAll", method = RequestMethod.GET)
+	//회원목록조회
+	@RequestMapping(value = "selectAll.admin", method = RequestMethod.GET)
 	public ModelAndView selectAll() {							
 		List<MemberVO> list = m_service.selectAll();				
 		return new ModelAndView("admin/list","list",list);
-	}
+	}	
+	//회원삭제
 	@ResponseBody
-	@RequestMapping(value = "/admin/delMember", method = RequestMethod.GET)
-	public String deleteMember(HttpServletRequest request) {
-		//System.out.println(id);
-		//int result = m_service.MemberDelete(id);
-		int result = 1;
-		System.out.println(result);
-		return "ihi";
+	@RequestMapping(value = "delete.admin", method = RequestMethod.GET)
+	public int deleteMember(@RequestParam("id")String id) {
+		int result = m_service.MemberDelete(id);
+		return result;
+		}
+	//상품등록
+	@RequestMapping(value = "shop.admin", method = RequestMethod.GET)
+	public String shopAdd() {											
+		return "admin/shopAdd";
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/admin/check", method = RequestMethod.GET)
-	public String checkk() {							
-		return "hihi";
+	//테스트용
+	@RequestMapping(value = "shop.aaan", method = RequestMethod.GET)
+	public String Test() {											
+		return "admin/shopAdd";
 	}
 	
 	
