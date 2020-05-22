@@ -3,10 +3,19 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
 
-<!-- 회원가입 -->
+	<!-- 회원가입 -->
 <insert id="register" parameterType="member">
 insert into hs_member(userid,password,email) values(#{userId},#{password},#{email})				
 	</insert>
 	
+	<!-- 조회 -->
+	<select id="selectAll" resultType="member">
+	select userid,email,regdate from hs_member where checked=1
+	</select>
+	
+	<!-- 멤버삭제 -->
+	<delete id="deletemember" parameterType="String">
+	delete from hs_member where userid=#{id}
+	</delete>
 
 </mapper>

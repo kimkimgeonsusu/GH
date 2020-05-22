@@ -1,6 +1,9 @@
             <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-            <h3><c:out value="${sessionScope.admin}"/></h3> 
+            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>            
+				
+            <h3><c:out value="${sessionScope.admin}"/></h3>
+            <h3><c:out value="${pageContext.request.contextPath}"/></h3>
+           
             <!-- header start -->
             <header>
                 <div class="header-area transparent-bar">
@@ -67,8 +70,15 @@
                                                     </ul>
                                                 </li>
                                                 <!-- <li><a href="contact.html">contact us</a></li> -->                                                                                               
-                                                 <c:if test="${sessionScope.admin eq 'admin' }">
-												<li><a href="adminsale">관리자페이지</a></li>                                         
+                                                 <c:if test="${sessionScope.admin eq 'admin' }">												
+												<li><a href="#">관리자모드</a>
+                                                <ul>
+                                                    <li><a href="index.html">home version 1</a></li>
+                                                    <li><a href="index-2.html">home version 2</a></li>
+                                                    <li><a href="index-3.html">home version 3</a></li>
+                                                    <li><a href="${pageContext.request.contextPath}/admin/selectAll">회원관리</a></li>
+                                                </ul>
+                                            </li>                                         
                                          		</c:if>    
                                           <c:if test="${empty sessionScope.admin  }">                                        
                                             <li><a href="contact.html">contact us</a></li>

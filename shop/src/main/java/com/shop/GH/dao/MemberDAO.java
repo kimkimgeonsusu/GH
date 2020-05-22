@@ -1,5 +1,7 @@
 package com.shop.GH.dao;
 
+import java.util.List;
+
 import com.shop.GH.vo.MemberVO;
 
 
@@ -10,5 +12,10 @@ import com.shop.GH.vo.MemberVO;
 public interface MemberDAO {	
 	//회원가입
 	public int register(MemberVO vo);
-
+	
+	//멤버조회 어드민
+	public List<MemberVO> selectAll();
+	
+	//멤버삭제 어드민
+	public int MemberDelete(String id);
 }

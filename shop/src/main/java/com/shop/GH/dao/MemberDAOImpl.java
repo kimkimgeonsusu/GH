@@ -1,5 +1,7 @@
 package com.shop.GH.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -26,6 +28,22 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		return sql.insert("member.register",vo);
 	}
+	
+	//조회
+	@Override
+	public List<MemberVO> selectAll() {
+		// TODO Auto-generated method stub
+		return sql.selectList("member.selectAll");
+	}
+
+	@Override
+	public int MemberDelete(String id) {
+		// TODO Auto-generated method stub
+		return sql.delete("member.deletemember", id);
+	}
+
+
+
 	
 	
 
