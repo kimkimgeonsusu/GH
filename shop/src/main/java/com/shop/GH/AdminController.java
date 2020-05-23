@@ -57,6 +57,7 @@ public class AdminController {
 		return "admin/shopAdd";
 	}
 	
+	//asdsad
 	
 	
 	
